@@ -194,7 +194,7 @@ class Admin extends MY_Controller {
             $this->content_model->add_file($fileName, $blog_id);
             //move the file
 
-            if ($this->s3->putObject($thefile, "clubwoodham", $filelocation, S3:: ACL_PUBLIC_READ)) {
+            if ($this->s3->putObject($thefile, $this->bucket, $filelocation, S3:: ACL_PUBLIC_READ)) {
                 //echo "We successfully uploaded your file.";
                 $this->session->set_flashdata('message', 'News Added and file uploaded successfully');
             } else {
@@ -209,7 +209,7 @@ class Admin extends MY_Controller {
 
             $newfile = file_get_contents($thumblocation, true);
 
-            if ($this->s3->putObject($newfile, "clubwoodham", $newfilename, S3:: ACL_PUBLIC_READ)) {
+            if ($this->s3->putObject($newfile, $this->bucket, $newfilename, S3:: ACL_PUBLIC_READ)) {
                 //echo "We successfully uploaded your file.";
                 $this->session->set_flashdata('message', 'News Added and file uploaded successfully');
             } else {
