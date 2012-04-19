@@ -40,17 +40,19 @@ if (isset($meta_keywords) && $meta_keywords != NULL) {
 <link rel="apple-touch-icon" href="<?= base_url() ?>apple-touch-icon.png">
 
 <!-- Load google fonts-->
-<link href='http://fonts.googleapis.com/css?family=Fanwood+Text' rel='stylesheet' type='text/css'>
+<link href='http://fonts.googleapis.com/css?family=Oswald:400,700' rel='stylesheet' type='text/css'>
 
 <!-- CSS : implied media="all" -->
 <link rel="stylesheet" href="<?= base_url() ?>css/custom-theme/jquery-ui-1.8.9.custom.css">
-<link rel="stylesheet" href="<?= base_url() ?>css/grid.css">
+
 <link rel="stylesheet" href="<?= base_url() ?>css/demo_table.css">
 <link rel="stylesheet" href="<?= base_url() ?>css/demo_table_jui.css">
 
 <link rel="stylesheet" href="<?= base_url() ?>css/style.css?v=2">
-
-<link rel="stylesheet" href="<?= base_url() ?>css/garden/template.css">
+<link rel="stylesheet" href="<?= base_url() ?>css/<?=$this->config_theme?>/base.css">
+<link rel="stylesheet" href="<?= base_url() ?>css/<?=$this->config_theme?>/layout.css">
+<link rel="stylesheet" href="<?= base_url() ?>css/<?=$this->config_theme?>/skeleton.css">
+<link rel="stylesheet" href="<?= base_url() ?>css/<?=$this->config_theme?>/template.css">
 
 <link rel="stylesheet" href="<?= base_url() ?>css/mscarousel.css">
 <link rel="stylesheet" media="handheld" href="<?= base_url() ?>css/handheld.css?v=2">  
@@ -61,7 +63,7 @@ if (isset($meta_keywords) && $meta_keywords != NULL) {
 <script type="text/javascript">
 
   var _gaq = _gaq || [];
-  _gaq.push(['_setAccount', 'UA-19623681-14']);
+  _gaq.push(['_setAccount', 'UA-920708-18']);
   _gaq.push(['_trackPageview']);
 
   (function() {

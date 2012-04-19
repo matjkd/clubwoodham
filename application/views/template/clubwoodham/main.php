@@ -8,46 +8,67 @@
 <!--[if (gt IE 9)|!(IE)]><!--> <html lang="en" class="no-js"> <!--<![endif]-->
     <head>
 
-        <?= $this->load->view('template/garden/header') ?>
+        <?= $this->load->view('template/' . $this->config_theme . '/header') ?>
 
     </head>
 
     <body>
-          <input type="hidden" id="baseurl" value="<?=base_url()?>"/>
-<!--<img id="bgimg" src="<?= base_url() ?>css/garden/images/background.jpg" />-->
-        <div id="header">
+        <input type="hidden" id="baseurl" value="<?= base_url() ?>"/>
+        <div id="mainContainer" class="container">
+            <div id="breadcrumb" class="sixteen columns">
+                <!--   breadcrumb nav and search-->
+                test
+            </div>
+            <div id="header" class="sixteen columns">
+
+&nbsp;
 
 
-            <div id="menutop">
+            </div>
+            <div id="menucontainer" class="sixteen columns">
+                <div id="menutop" >
 
 
-                <?= $this->load->view('global/garden/menu') ?>
+                    <?= $this->load->view('global/' . $this->config_theme . '/menu') ?>
+                </div> 
+            </div>
+
+
+            <div id="container" >
+
+                <?php if (isset($slideshow_active) && $slideshow_active == 1) { ?>    
+                    <?= $this->load->view('slideshow/slideshow') ?>
+                <?php } ?>
+              
+                    <div class="ten columns">
+
+
+                        <?= $this->load->view($main_content) ?>   
+                    </div>
+
+                    <div class="six columns">
+
+                        <img width="330px;" src="<?=base_url()?>images/icons/sidebox.png"/>
+                    </div>
+               
+
             </div> 
+
+          
         </div>
-   
-    <div id="container">
-        <?php if (isset($slideshow_active) && $slideshow_active == 1) { ?>    
-        <?= $this->load->view('slideshow/slideshow') ?>
-        <?php }  ?>
+          <div  id="bottomfooter">
 
-            <?= $this->load->view($main_content) ?>   
+                <?= $this->load->view('global/' . $this->config_theme . '/footer_menu') ?>
 
+            </div>
+            <div class="bottom_menu">
+                <div class="footermenu" >
+                    <?= $this->load->view('global/' . $this->config_theme . '/menu') ?> 
+                </div>
 
-    </div> 
+            </div>
+        <!--! end of #container -->
+        <?= $this->load->view('global/footer') ?>
 
-    <div  id="bottomfooter" >
-
-        <?= $this->load->view('global/garden/footer_menu') ?>
-
-    </div>
-    <div class="bottom_menu">
-    <div class="footermenu" >
- <?= $this->load->view('global/garden/menu') ?> 
-    </div>
-        
-    </div>
-    <!--! end of #container -->
-    <?= $this->load->view('global/footer') ?>
-
-</body>
+    </body>
 </html>
