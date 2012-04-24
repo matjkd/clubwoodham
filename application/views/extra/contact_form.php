@@ -18,6 +18,12 @@
     <p class="form_subject">
         <?= form_input('subject') ?>
     </p>
+    
+    <?= form_label('Areas of interest') ?>
+    <p class="form_subject">
+        <?= form_input('interest') ?>
+    </p>
+    
     <?= form_label('Message') ?>
     <p class="form_message">
         <?= form_textarea('message') ?>

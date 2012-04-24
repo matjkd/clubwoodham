@@ -11,9 +11,10 @@ class Email extends My_Controller {
     function index() {
         
     }
-/**
- * 
- */
+
+    /**
+     * 
+     */
     function send() {
         $this->form_validation->set_rules('name', 'name', 'trim|required');
         $this->form_validation->set_rules('phone', 'phone', 'trim|required');
@@ -22,8 +23,9 @@ class Email extends My_Controller {
         $this->form_validation->set_rules('message', 'message', 'trim');
         $this->form_validation->set_rules('captcha', 'captcha', 'trim|required');
 
-                $data['name'] = $this->input->post('name');
-                        $data['phone'] = $this->input->post('phone');
+        $data['name'] = $this->input->post('name');
+        $data['phone'] = $this->input->post('phone');
+         $data['mobile'] = $this->input->post('mobile');
         $data['email'] = $this->input->post('email');
         $data['subject'] = $this->input->post('subject');
         $data['message'] = $this->input->post('message');
@@ -81,9 +83,8 @@ class Email extends My_Controller {
             redirect('welcome/main/contact', 'refresh');
         }
     }
-    
-    
-     function quote() {
+
+    function quote() {
         $this->form_validation->set_rules('name', 'name', 'trim|required');
         $this->form_validation->set_rules('phone', 'phone', 'trim|required');
         $this->form_validation->set_rules('email', 'email', 'trim|required|valid_email');
@@ -91,8 +92,8 @@ class Email extends My_Controller {
         $this->form_validation->set_rules('qmessage', 'message', 'trim');
         $this->form_validation->set_rules('captcha', 'captcha', 'trim|required');
 
-                $data['name'] = $this->input->post('name');
-                        $data['phone'] = $this->input->post('phone');
+        $data['name'] = $this->input->post('name');
+        $data['phone'] = $this->input->post('phone');
         $data['email'] = $this->input->post('email');
         $data['subject'] = $this->input->post('qsubject');
         $data['message'] = $this->input->post('qmessage');
