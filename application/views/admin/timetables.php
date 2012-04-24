@@ -1,3 +1,4 @@
+<div style=" padding-left:10px;">
 <?php foreach ($content as $row): ?>
     <h1><?= $row->title ?></h1>
     <?php endforeach; ?>
@@ -59,7 +60,7 @@ if($row2->day == 7) { $daysarray['5'] = 'Sunday'; }
     </tbody>
 </table>
 <?php endforeach; } else { echo "No timetable data has been added yet."; } ?>
-
+</div>
 <!--Main content page for club woodham site-->
 
 <div style=" padding-left:10px;">

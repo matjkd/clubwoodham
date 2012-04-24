@@ -46,7 +46,7 @@ $data['timetable'] = $this->timetable_model->get_timetable($data['menu']);
 
             $data['meta_keywords'] = $row->meta_desc;
             $data['meta_description'] = $row->meta_keywords;
-            $data['slideshow'] = $row->slideshow;
+            $data['slideshow_active'] = $row->slideshow;
 
 
 

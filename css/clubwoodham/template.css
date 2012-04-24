@@ -312,7 +312,12 @@ border-radius: 12px;
     box-shadow: rgba(0,0,0, 0.1) 0px 0px 8px;
     -moz-box-shadow: rgba(0,0,0, 0.1) 0px 0px 8px;
     -webkit-box-shadow: rgba(0,0,0, 0.1) 0px 0px 8px;
+    margin-bottom:0px;
 
+}
+#contact_form input[type="checkbox"] {
+width:30px;
+padding-bottom:4px;
 }
 #contact_form input:hover, textarea:hover,
 input:focus, textarea:focus {
@@ -320,7 +325,7 @@ input:focus, textarea:focus {
     -webkit-box-shadow: rgba(0, 0, 0, 0.15) 0px 0px 8px;
 }
 #contact_form label {
-    margin-left: 10px;
+    margin-left: 0px;
     color: #999999;
 }
 

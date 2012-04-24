@@ -10,23 +10,41 @@
         <?= form_label('Phone Number') ?><br/>
         <?= form_input('phone', set_value('phone')) ?>
     </p>
-    <?= form_label('Email') ?>
+
+
+
     <p class="form_email">
-        <?= form_input('email') ?>
+        <?= form_label('Email') ?>
+        <?= form_input('email', set_value('email')) ?>
     </p>
-    <?= form_label('Subject') ?>
+
     <p class="form_subject">
-        <?= form_input('subject') ?>
+        <?= form_label('Subject') ?>
+        <?= form_input('subject', set_value('subject')) ?>
     </p>
-    
-    <?= form_label('Areas of interest') ?>
+
+
     <p class="form_subject">
-        <?= form_input('interest') ?>
+        <?= form_label('Areas of interest') ?><br/>
+        <?= form_checkbox('interest[]', 'Gym Membership', set_checkbox('interest', 'Gym Membership')) ?>Gym Membership<br/>
+        <?= form_checkbox('interest[]', 'Easy Gym', set_checkbox('interest', 'Easy Gym')) ?>Easy Gym<br/>
+        <?= form_checkbox('interest[]', 'VIP Days', set_checkbox('interest', 'VIP Days')) ?>VIP Days<br/>
+        <?= form_checkbox('interest[]', 'Bar and Restaurant Bookings', set_checkbox('interest', 'Bar and Restaurant Bookings')) ?>Bar and Restaurant Bookings<br/>
+        <?= form_checkbox('interest[]', 'Squash and Raquetball', set_checkbox('interest', 'Squash and Raquetball')) ?>Squash and Raquetball<br/>
+        <?= form_checkbox('interest[]', 'Childrens Facilities', set_checkbox('interest', 'Childrens Facilities')) ?>Childrens Facilities<br/>
+        <?= form_checkbox('interest[]', 'Senior Programmes', set_checkbox('interest', 'Senior Programmes')) ?>Senior Programmes<br/>
     </p>
-    
-    <?= form_label('Message') ?>
+
+
     <p class="form_message">
-        <?= form_textarea('message') ?>
+        <?= form_label('Message') ?>
+        <?= form_textarea('message', set_value('message')) ?>
+    </p>
+    
+      <p class="form_subject">
+      
+        <?= form_checkbox('mailinglist', 'I do not wish to be on your mailing list', set_checkbox('mailinglist', 'I do not wish to be on your mailing list')) ?>Tick if you do not wish to receive future promotions from us<br/>
+       
     </p>
 
     Enter the word you see below<br/>

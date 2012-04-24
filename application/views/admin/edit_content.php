@@ -29,13 +29,7 @@ Title* <br/><?=form_input('title', $row->title)?><br/>
 
         <?php
         $options = array(
-            'driveways' => 'driveways',
-            'landscapes' => 'Landscapes',
-            'outdoor_buildings' => 'Outdoor Buildings',
-            'patios' => 'Patios',
-            'ponds_and_pools' => 'Ponds and Pools',
-            'wallsgatesrailings' => 'Walls Gates Railings',
-            'artists_impressions' => 'Artists Impressions',
+            'gallery' => 'gallery'
         );
         ?>
     <?= form_dropdown('gallery', $options, $row->gallery) ?>
@@ -64,6 +58,9 @@ Extra:
 <br/><?=form_input('extra', $row->extra)?><br/>
 Sidebox:
 <br/><?=form_input('sidebox', $row->sidebox)?><br/>
+
+Slideshow:
+<br/><?=form_input('slideshow', $row->slideshow)?><br/>
 <input type="submit" class="wymupdate" />
 <?=form_close()?> 
 <?php endforeach;?>

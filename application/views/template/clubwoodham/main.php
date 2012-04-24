@@ -42,7 +42,7 @@
               
                     <div class="ten columns">
 
-
+  <?= $this->load->view('global/alert') ?>   
                         <?= $this->load->view($main_content) ?>   
                     </div>
 
