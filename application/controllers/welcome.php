@@ -18,19 +18,12 @@ class Welcome extends MY_Controller {
             $data['menu'] = 'home';
         }
 
-        $data['content'] = $this->content_model->get_content($data['menu']);
+
+        $this->get_content_data($data['menu']);
         $data['captcha'] = $this->captcha_model->initiate_captcha();
         $data['seo_links'] = $this->content_model->get_seo_links();
         $data['testimonials'] = $this->content_model->get_testimonials();
-        foreach ($data['content'] as $row):
 
-            $data['title'] = $row->title;
-            $data['sidebox'] = $row->sidebox;
-            $data['metatitle'] = $row->meta_title;
-            $data['meta_keywords'] = $row->meta_desc;
-            $data['meta_description'] = $row->meta_keywords;
-            $data['slideshow_active'] = $row->slideshow;
-        endforeach;
         $data['sidebar'] = "sidebox/side";
         $data['main_content'] = "global/" . $this->config_theme . "/content";
         $data['cats'] = $this->products_model->get_cats();
@@ -43,6 +36,24 @@ class Welcome extends MY_Controller {
         $data['slideshow'] = 'header/slideshow';
         $this->load->vars($data);
         $this->load->view('template/main');
+    }
+
+    function get_content_data($menu) {
+        $data['content'] = $this->content_model->get_content($menu);
+        foreach ($data['content'] as $row):
+
+            $data['title'] = $row->title;
+            $data['sidebox'] = $row->sidebox;
+            $data['metatitle'] = $row->meta_title;
+ $data['slideshow_active'] = $row->slideshow;
+            $data['meta_keywords'] = $row->meta_desc;
+            $data['meta_description'] = $row->meta_keywords;
+            $data['slideshow'] = $row->slideshow;
+
+
+        endforeach;
+        $this->load->vars($data);
+        return $data;
     }
 
     function test() {

@@ -3,9 +3,7 @@
 <div style=" padding-left:10px;">
 <?php foreach ($content as $row): ?>
   <!--add image if set-->
- <?php if (isset($row->sidebox) && $row->sidebox != NULL) { ?> 
-  <div style="float:left; width:530px">
-  <?php } ?>
+
     <h1><?= $row->title ?></h1>
 
     <?php

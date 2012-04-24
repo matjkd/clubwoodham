@@ -9,6 +9,7 @@ class Admin extends MY_Controller {
         $this->load->model('content_model');
         $this->load->model('captcha_model');
         $this->load->model('gallery_model');
+        $this->load->model('timetable_model');
         $this->load->model('menu_model');
         $this->load->library('s3');
     }
@@ -99,6 +100,45 @@ class Admin extends MY_Controller {
         $data['news'] = $this->news_model->list_news();
         $this->load->vars($data);
         $this->load->view('template/main');
+    }
+
+    function timetables($category='studio') {
+        $data['category'] = $category;
+        $data['main_content'] = "admin/timetables";
+
+        $menu = $category . '_timetable';
+        $this->get_content_data($menu);
+
+        $data['pages'] = $this->content_model->get_all_content();
+        $data['timetable'] = $this->timetable_model->get_timetable($category);
+        $data['sidebox'] = "timetable";
+        $this->load->vars($data);
+        $this->load->view('template/main');
+    }
+    
+     function get_content_data($menu) {
+        $data['content'] = $this->content_model->get_content($menu);
+        foreach ($data['content'] as $row):
+
+            $data['title'] = $row->title;
+            $data['sidebox'] = $row->sidebox;
+            $data['metatitle'] = $row->meta_title;
+
+            $data['meta_keywords'] = $row->meta_desc;
+            $data['meta_description'] = $row->meta_keywords;
+            $data['slideshow'] = $row->slideshow;
+
+
+
+        endforeach;
+        $this->load->vars($data);
+        return $data;
+    }
+
+    function add_timetable() {
+
+        $this->timetable_model->add_entry();
+        redirect("admin/timetables");
     }
 
     function editnews() {
@@ -225,8 +265,6 @@ class Admin extends MY_Controller {
             $this->session->set_flashdata('message', 'News Added');
         }
     }
-    
-    
 
     function submit_content() {
         $this->form_validation->set_rules('title', 'Title', 'trim|max_length[255]|required');
@@ -430,9 +468,9 @@ class Admin extends MY_Controller {
         $this->load->vars($data);
         $this->load->view('template/main');
     }
-    
+
     function sort_gallery() {
-          $pages = $this->input->post('pages');
+        $pages = $this->input->post('pages');
         parse_str($pages, $pageOrder);
 
         // list id is retrieved from the ID on the sortable list

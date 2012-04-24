@@ -36,7 +36,7 @@
 
             <div id="container" >
 
-                <?php if (isset($slideshow_active) && $slideshow_active == 1) { ?>    
+                <?php if (isset($slideshow_active) && $slideshow_active != NULL) { ?>    
                     <?= $this->load->view('slideshow/slideshow') ?>
                 <?php } ?>
               
@@ -48,22 +48,25 @@
 
                     <div class="six columns">
 
-                        <img width="330px;" src="<?=base_url()?>images/icons/sidebox.png"/>
+                        <?php if(isset($sidebox) && $sidebox != NULL) { ?>
+                        <?=$this->load->view('sidebox/'.$sidebox)?>
+                        <?php } ?>
                     </div>
                
 
             </div> 
 
-          
-        </div>
-          <div  id="bottomfooter">
+            <div  id="bottomfooter">
 
                 <?= $this->load->view('global/' . $this->config_theme . '/footer_menu') ?>
 
             </div>
+          
+        </div>
+          
             <div class="bottom_menu">
                 <div class="footermenu" >
-                    <?= $this->load->view('global/' . $this->config_theme . '/menu') ?> 
+                    <?= $this->load->view('global/' . $this->config_theme . '/bottomnav') ?> 
                 </div>
 
             </div>

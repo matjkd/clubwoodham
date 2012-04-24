@@ -11,7 +11,7 @@
 | next to the desiered server, then clicking 'Settings & API Credentials'
 |
 */
-$config['api_key'] = '8307a055-ee31-415c-bdfe-7b5bb111e7ef';
+$config['api_key'] = '03504603-b33d-4f31-aa60-4830829c67a5';
  
 /*
 |--------------------------------------------------------------------------
@@ -26,8 +26,8 @@ $config['api_key'] = '8307a055-ee31-415c-bdfe-7b5bb111e7ef';
 |
 | Configure your Sender Signatures at http://postmarkapp.com/signatures
 */
-$config['from_name'] = 'Flyer Direct';
-$config['from_address'] = 'info@flyerdirect.co.uk';
+$config['from_name'] = 'Club Woodham';
+$config['from_address'] = 'info@clubwoodham.co.uk';
  
 /*
 |--------------------------------------------------------------------------

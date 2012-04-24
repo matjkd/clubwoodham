@@ -1,22 +1,49 @@
 
 <ul class="topnav">
     <li><?= anchor('/', 'Home') ?></li>
-    <li><?= anchor('/gym', 'Gym') ?>
+    <li><a href="#">Gym</a>
 
         <ul class="subnav">
-            <li><?= anchor('/personaltraining', 'Personal Training') ?></li>
+            <li><?= anchor('/gym', 'Overview') ?>
+            <li><?= anchor('/personal-training', 'Personal Training') ?></li>
             <li><?= anchor('/goals', 'Achieving your goals') ?></li>
         </ul>
     </li>
-    <li><?= anchor('/studio', ' Studio') ?></li>
-    <li><?= anchor('/bar-restaurant', 'Bar/Restaurant') ?></li>
+    <li><a href="#">Studio</a>
+        <ul class="subnav">
+            <li><?= anchor('/studio', 'Overview') ?>
+            <li><?= anchor('/timetable/main/studio', 'Class Timetable') ?></li>
+            <li><?= anchor('/class-descriptions', 'Class Descriptions') ?></li>
+        </ul>
+    </li>
+    <li><a href="#">Bar/Restaurant</a> 
+        <ul class="subnav">
+            <li><?= anchor('/bar-restaurant', 'Overview') ?>
+            <li><?= anchor('/menus', 'Menus') ?></li>
+
+        </ul>
+    </li>
 
     <li><?= anchor('squash', 'Squash') ?></li>
-    <li><?= anchor('juniors', 'Juniors') ?></li>
-    <li><?= anchor('Seniors', 'seniors') ?></li>
-    <li><?= anchor('circuit-gym', 'Circuit Gym') ?></li>
+    <li><a href="#">Juniors</a>
+        <ul class="subnav">
+            <li><?= anchor('/juniors', 'Overview') ?>
+            <li><?= anchor('/timetable/main/junior-programme', 'Junior Programme') ?></li>
+            <li><?= anchor('/creche', 'Creche') ?></li>
+            <li><?= anchor('/fit-kids', 'Fit Kids') ?></li>
+            <li><?= anchor('/kids-parties', 'Kids Parties') ?></li>
+
+        </ul></li>
+    <li><?= anchor('seniors', 'Seniors') ?></li>
+    <li><a href="#">Circuit Gym</a>
+      <ul class="subnav">
+            <li><?= anchor('circuit-gym', 'Overview') ?>
+            <li><?= anchor('/timetable/main/circuitgym', 'Timetable') ?></li>
+            <li><?= anchor('/circuit-gym-membership', 'Membership') ?></li>
+        </ul>
+    </li>
     <li><?= anchor('membership', 'Membership') ?></li>
-    <li><?= anchor('/contact', 'contact us') ?></li>
+    <li><?= anchor('/contact', 'Contact us') ?></li>
 
 
     <?php
@@ -24,7 +51,7 @@
     $role = $this->session->userdata('role');
     if ($is_logged_in != 0 || $role == 1) {
 
-        echo anchor('admin', 'Admin');
+        echo "<li>".anchor('admin', 'Admin')."</li>";
     }
     ?>
 

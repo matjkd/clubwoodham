@@ -11,7 +11,7 @@ if (isset($metatitle) && $metatitle != NULL) {
     if (isset($title) && $title != NULL) {
         echo $title;
     } else {
-        echo "Grand Garden Design - Beautiful Garden Designs, Outdoor Buildings and Landscaping";
+        echo "Club Woodham - More than just your average health club";
     }
 }
 ?></title>
@@ -48,13 +48,15 @@ if (isset($meta_keywords) && $meta_keywords != NULL) {
 <link rel="stylesheet" href="<?= base_url() ?>css/demo_table.css">
 <link rel="stylesheet" href="<?= base_url() ?>css/demo_table_jui.css">
 
+
 <link rel="stylesheet" href="<?= base_url() ?>css/style.css?v=2">
 <link rel="stylesheet" href="<?= base_url() ?>css/<?=$this->config_theme?>/base.css">
 <link rel="stylesheet" href="<?= base_url() ?>css/<?=$this->config_theme?>/layout.css">
 <link rel="stylesheet" href="<?= base_url() ?>css/<?=$this->config_theme?>/skeleton.css">
 <link rel="stylesheet" href="<?= base_url() ?>css/<?=$this->config_theme?>/template.css">
 
-<link rel="stylesheet" href="<?= base_url() ?>css/mscarousel.css">
+<!--[if lt IE 8]>    <link rel="stylesheet" href="<?= base_url() ?>css/<?=$this->config_theme?>/ie8.css"> <![endif]-->
+
 <link rel="stylesheet" media="handheld" href="<?= base_url() ?>css/handheld.css?v=2">  
 
 <!-- All JavaScript at the bottom, except for Modernizr which enables HTML5 elements & feature detects -->
