@@ -20,6 +20,9 @@ class Welcome extends MY_Controller {
 
 
         $this->get_content_data($data['menu']);
+        if($data['menu'] == 'news') {
+             $data['news'] = $this->content_model->get_content_cat('news');
+        }
         $data['captcha'] = $this->captcha_model->initiate_captcha();
         $data['seo_links'] = $this->content_model->get_seo_links();
         $data['testimonials'] = $this->content_model->get_testimonials();
@@ -72,6 +75,10 @@ class Welcome extends MY_Controller {
         }
 
         $data['content'] = $this->content_model->get_content($data['menu']);
+        
+         if($data['menu'] == 'news') {
+             $data['news'] = $this->content_model->get_content_cat('news');
+        }
         $data['captcha'] = $this->captcha_model->initiate_captcha();
         $data['testimonials'] = $this->content_model->get_testimonials();
         foreach ($data['content'] as $row):
@@ -97,6 +104,8 @@ class Welcome extends MY_Controller {
         $this->load->vars($data);
         $this->load->view('template/main');
     }
+    
+ 
 
     function gallery($gallery) {
         $data['content'] = $this->content_model->get_gallery($gallery);

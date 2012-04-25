@@ -76,11 +76,11 @@ p {
     position:relative;
 }
 #menucontainer {
- 
+
     background: url('images/menuback.jpg') repeat-x #036;
     width:960px;
     margin: 0 auto 20px;
-   
+
 }
 
 .maincontent {
@@ -90,11 +90,11 @@ p {
 #bottomfooter {
     background: url('images/footer.jpg') repeat-x #00385c;
     height:148px;
-   clear:both;
+    clear:both;
     width:960px;
     margin: 0 auto;
     color:#ffffff;
-   
+
 }
 .bottom_menu {
     width:960px;
@@ -215,27 +215,27 @@ p {
 }
 #HomePicOverlay {
     position:absolute;
-     z-index:500;
-     display:none;
-     margin-left:10px;
-   
+    z-index:500;
+    display:none;
+    margin-left:10px;
+
 }
 #HomePicOverlay2 {
     position:absolute;
-     z-index:500;
-     display:none;
-     
+    z-index:500;
+    display:none;
+
 }
 .slideshow {
- margin-left:10px;
+    margin-left:10px;
     z-index:400;
-    
-     
+
+
 }
 .slideshow img, .slideshow2 img {
-       -moz-border-radius: 12px;
--webkit-border-radius: 12px;
-border-radius: 12px;
+    -moz-border-radius: 12px;
+    -webkit-border-radius: 12px;
+    border-radius: 12px;
 }
 #side_box {
 
@@ -316,8 +316,8 @@ border-radius: 12px;
 
 }
 #contact_form input[type="checkbox"] {
-width:30px;
-padding-bottom:4px;
+    width:30px;
+    padding-bottom:4px;
 }
 #contact_form input:hover, textarea:hover,
 input:focus, textarea:focus {
@@ -361,11 +361,11 @@ input:focus, textarea:focus {
 }
 
 ul.bottomnav {
-       list-style: none;
+    list-style: none;
     padding: 0 0px;
     margin: 0;
     float: left;
-    
+
 
 }
 ul.bottomnav li {
@@ -373,13 +373,13 @@ ul.bottomnav li {
     margin: 0;
     padding: 0 10px;
     position: relative; /*--Declare X and Y axis base for sub navigation--*/
-   
+
     border-right: 1px solid #555; /*--Create bevel effect--*/
 
 
 }
 ul.bottomnav li a{
-    
+
     color: #555;
     display: block;
     text-decoration: none;
@@ -445,7 +445,7 @@ ul.topnav li ul.subnav li{
     border-left: 0px solid #0e3a55; /*--Create bevel effect--*/
     border-right: 0px solid #186797; /*--Create bevel effect--*/
     clear: both;
-     z-index:1000;
+    z-index:1000;
 
 }
 html ul.topnav li ul.subnav li a {
@@ -531,4 +531,19 @@ ul.subnav li a{
     border-right: 1px solid #aabcfe;
     border-left: 1px solid #aabcfe;
     color: #669;
+}
+
+.newsImage {
+    float:left;
+    width:200px;
+    padding-right:5px;
+}
+.newsImage img {
+    -moz-border-radius: 12px;
+    -webkit-border-radius: 12px;
+    border-radius: 12px;
+    width:200px;
+}
+.newsContent {
+   
 }

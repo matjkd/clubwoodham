@@ -17,6 +17,15 @@ class Content_model extends CI_Model {
             return $query->result();
         }
     }
+    
+    function get_content_cat($cat) {
+
+        $this->db->where('category', $cat);
+        $query = $this->db->get('content');
+        if ($query->num_rows > 0) {
+            return $query->result();
+        }
+    }
 
     function get_gallery($gallery) {
 
@@ -27,8 +36,8 @@ class Content_model extends CI_Model {
             return $query->result();
         }
     }
-    
-     function get_testimonials() {
+
+    function get_testimonials() {
 
         $this->db->where('category', 'testimonial');
         $query = $this->db->get('content');
@@ -66,10 +75,10 @@ class Content_model extends CI_Model {
             'title' => $this->input->post('title'),
             'extra' => $this->input->post('extra'),
             'meta_desc' => $this->input->post('meta_desc'),
-             'meta_keywords' => $this->input->post('meta_keywords'),
+            'meta_keywords' => $this->input->post('meta_keywords'),
             'meta_title' => $this->input->post('meta_title'),
             'sidebox' => $this->input->post('sidebox'),
-             'slideshow' => $this->input->post('slideshow')
+            'slideshow' => $this->input->post('slideshow')
         );
 
 
@@ -192,6 +201,38 @@ class Content_model extends CI_Model {
         $this->db->where('content_id', $blog_id);
         $update = $this->db->update('content', $content_update);
         return $update;
+    }
+
+    /**
+     *
+     * @param type $filename
+     * @param type $blog_id
+     * @return type 
+     */
+    function add_attachment($filename, $name, $blog_id) {
+        $content_update = array(
+            'filename' => $filename,
+            'name' => $name,
+            'content_id' => $blog_id
+        );
+
+
+        $update = $this->db->insert('attachments', $content_update);
+        return $update;
+    }
+
+    function get_attachments($id) {
+        $this->db->where('content_id', $id);
+        $query = $this->db->get('attachments');
+        if ($query->num_rows > 0) {
+            return $query->result();
+        }
+    }
+
+    function delete_attachment($id) {
+        $this->db->where('attachment_id', $id);
+        $this->db->delete('attachments');
+        return;
     }
 
 }

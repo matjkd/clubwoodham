@@ -42,7 +42,9 @@ class Admin extends MY_Controller {
         $id = $this->uri->segment(3);
         $data['menu'] = $id;
         $data['page'] = $id;
+        $data['sidebox'] = '/attachments';
         $data['content'] = $this->content_model->get_content_id($id);
+        $data['attachments'] = $this->content_model->get_attachments($id);
         $data['captcha'] = $this->captcha_model->initiate_captcha();
         $data['seo_links'] = $this->content_model->get_seo_links();
         $data['main_content'] = "admin/edit_content";
@@ -81,7 +83,7 @@ class Admin extends MY_Controller {
             $this->upload_image($id);
 
 
-            redirect("admin/edit/$id");
+             redirect("admin/edit/$id");
         }
     }
 
@@ -115,8 +117,8 @@ class Admin extends MY_Controller {
         $this->load->vars($data);
         $this->load->view('template/main');
     }
-    
-     function get_content_data($menu) {
+
+    function get_content_data($menu) {
         $data['content'] = $this->content_model->get_content($menu);
         foreach ($data['content'] as $row):
 
@@ -211,6 +213,40 @@ class Admin extends MY_Controller {
         redirect("admin/edit_practice/$id");
     }
 
+    function upload_attachment($id, $name) {
+        $this->gallery_model->upload_attachment();
+
+        if (!empty($_FILES) && $_FILES['file']['error'] != 4) {
+
+            $fileName = $_FILES['file']['name'];
+            $tmpName = $_FILES['file']['tmp_name'];
+            $fileName = str_replace(" ", "_", $fileName);
+            $filelocation = $fileName;
+
+            $thefile = file_get_contents($tmpName, true);
+
+            //add filename into database
+            //get blog id
+            if ($id == 0) {
+                $content_id = mysql_insert_id();
+            } else {
+                $content_id = $id;
+            }
+            $this->content_model->add_attachment($fileName, $name, $content_id);
+            //move the file
+
+            if ($this->s3->putObject($thefile, $this->bucket, $filelocation, S3:: ACL_PUBLIC_READ)) {
+                //echo "We successfully uploaded your file.";
+                $this->session->set_flashdata('message', 'News Added and file uploaded successfully');
+            } else {
+                //echo "Something went wrong while uploading your file... sorry.";
+                $this->session->set_flashdata('message', 'News Added, but your file did not upload');
+            }
+            $this->gallery_path = "./images/temp";
+            unlink($this->gallery_path . '/' . $fileName . '');
+        }
+    }
+
     function upload_image($id = 0) {
 
         $this->gallery_model->do_upload();
@@ -220,6 +256,7 @@ class Admin extends MY_Controller {
 
             $fileName = $_FILES['file']['name'];
             $tmpName = $_FILES['file']['tmp_name'];
+             $fileName = str_replace(" ", "_", $fileName);
             $filelocation = $fileName;
 
             $thefile = file_get_contents($tmpName, true);
@@ -281,17 +318,37 @@ class Admin extends MY_Controller {
                 // run insert model to write data to db
                 //upload file
                 //retrieve uploaded file
+                
                 $this->upload_image();
 
 
 
 
-                redirect('/admin');   // or whatever logic needs to occur
+                  redirect('/admin');   // or whatever logic needs to occur
             } else {
                 echo 'An error occurred saving your information. Please try again later';
                 // Or whatever error handling is necessary
             }
         }
+    }
+
+    function add_attachment($id) {
+        $this->form_validation->set_rules('name', 'Name', 'trim|max_length[255]|required');
+        if ($this->form_validation->run() == FALSE) { // validation hasn'\t been passed
+            echo "validation error";
+        } else { // passed validation proceed to post success logic
+            $name = $this->input->post('name');
+            $this->upload_attachment($id, $name);
+            
+               redirect("admin/edit/$id");
+        }
+    }
+    
+    function delete_attachment($id) {
+        //delete attachment from database
+        $this->content_model->delete_attachment($id);
+        redirect($this->agent->referrer());
+        //delete attachment from S3
     }
 
     function add_case() {
@@ -447,13 +504,13 @@ class Admin extends MY_Controller {
         $this->load->view('template/main');
     }
 
-    function add_testimonial_content() {
+    function add_news_content() {
         $data['slideshowtoggle'] = "off";
         $data['main_content'] = "admin/add_content";
         $data['seo_links'] = $this->content_model->get_seo_links();
         $data['captcha'] = $this->captcha_model->initiate_captcha();
         $data['pages'] = $this->content_model->get_all_content();
-        $data['category'] = "testimonial";
+        $data['category'] = "news";
         $this->load->vars($data);
         $this->load->view('template/main');
     }

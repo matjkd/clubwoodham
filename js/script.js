@@ -126,6 +126,46 @@ $(document).ready(function() {
     
 });
 
+
+/***********************************************/
+/*
+* MouseOver hover thing for sidebox buttons
+*
+*
+************************************************/
+$(document).ready(function(){
+    
+         $("#sidebox img").hover(
+     function() {
+        
+            $(this).stop().animate({
+                opacity: 0.5
+             
+              
+            },
+            150
+            );
+               
+            $(this).find('.clickhere').fadeIn(100);        
+        },
+        function() {
+        
+            $(this).stop().animate({
+                
+                 opacity: 1
+               
+                
+            
+            },
+            150
+            );
+           
+        }
+        );
+    
+});
+
+
 /***********************************************/
 /*
  * Drop Down Menu

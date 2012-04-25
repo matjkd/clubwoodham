@@ -43,6 +43,7 @@ $route['about'] = '/welcome/home';
 $route['contact'] = '/welcome/home';
 $route['menus'] =  '/welcome/home';
 $route['gallery'] = '/welcome/home';
+$route['news'] = '/welcome/home';
 $route['events'] = '/welcome/home';
 $route['contact'] = '/welcome/home';
 $route['social'] = '/welcome/home';
