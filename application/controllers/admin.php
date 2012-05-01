@@ -39,7 +39,9 @@ class Admin extends MY_Controller {
     function classes() {
 
         $data['content'] = $this->content_model->get_content_cat('class');
+         
         $data['main_content'] = "global/" . $this->config_theme . "/content";
+        
         $data['sidebox'] = 'classes';
         $this->load->vars($data);
         $this->load->view('template/main');
@@ -170,21 +172,23 @@ class Admin extends MY_Controller {
         redirect($this->agent->referrer());
     }
 
-    function get_content_data($menu) {
+     function get_content_data($menu) {
         $data['content'] = $this->content_model->get_content($menu);
+
         foreach ($data['content'] as $row):
 
             $data['title'] = $row->title;
             $data['sidebox'] = $row->sidebox;
             $data['metatitle'] = $row->meta_title;
-
+            $data['slideshow_active'] = $row->slideshow;
             $data['meta_keywords'] = $row->meta_desc;
             $data['meta_description'] = $row->meta_keywords;
             $data['slideshow'] = $row->slideshow;
-
-
+            $data['content_id'] = $row->content_id;
 
         endforeach;
+
+        $data['attachments'] = $this->content_model->get_attachments($data['content_id']);
         $this->load->vars($data);
         return $data;
     }

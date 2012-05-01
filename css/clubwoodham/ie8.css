@@ -12,9 +12,9 @@
 */
 #HomePicOverlay {
    display:block;
-   
+   z-index: 401;
 }
 #HomePicOverlay2 {
    display:block;
-     
+        z-index: 401;
 }

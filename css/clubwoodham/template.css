@@ -269,6 +269,9 @@ p {
 
 
 }
+#sidebox {
+    margin-bottom:12px;
+}
 #section2 {
     padding-top:20px;
     color:#ffffff;
@@ -465,6 +468,7 @@ ul.subnav li a{
 {
     font-size: 13px;
     font-weight: normal;
+    text-align: left;
     padding: 8px;
     background: #0e3a55;
     border-top: 4px solid #aabcfe;

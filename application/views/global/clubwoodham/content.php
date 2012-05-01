@@ -39,7 +39,7 @@
         <?php } ?>
     <?php endforeach; ?>
         
-        <?php if($attachments != NULL) { ?>
+        <?php if(isset($attachments) && $attachments != NULL) { ?>
 <h4>Attachments</h4>
 <p>
     <?php foreach($attachments as $row):?>
