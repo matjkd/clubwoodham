@@ -1,3 +1,1 @@
 <?=$this->load->view('sidebox/main')?>
-
-address to go here...

@@ -18,10 +18,12 @@ class Welcome extends MY_Controller {
             $data['menu'] = 'home';
         }
 
+        $data['news'] = $this->content_model->get_content_cat('news');
+
 
         $this->get_content_data($data['menu']);
-        if($data['menu'] == 'news') {
-             $data['news'] = $this->content_model->get_content_cat('news');
+        if ($data['menu'] == 'news') {
+            $data['news'] = $this->content_model->get_content_cat('news');
         }
         $data['captcha'] = $this->captcha_model->initiate_captcha();
         $data['seo_links'] = $this->content_model->get_seo_links();
@@ -43,18 +45,21 @@ class Welcome extends MY_Controller {
 
     function get_content_data($menu) {
         $data['content'] = $this->content_model->get_content($menu);
+
         foreach ($data['content'] as $row):
 
             $data['title'] = $row->title;
             $data['sidebox'] = $row->sidebox;
             $data['metatitle'] = $row->meta_title;
- $data['slideshow_active'] = $row->slideshow;
+            $data['slideshow_active'] = $row->slideshow;
             $data['meta_keywords'] = $row->meta_desc;
             $data['meta_description'] = $row->meta_keywords;
             $data['slideshow'] = $row->slideshow;
-
+            $data['content_id'] = $row->content_id;
 
         endforeach;
+
+        $data['attachments'] = $this->content_model->get_attachments($data['content_id']);
         $this->load->vars($data);
         return $data;
     }
@@ -74,22 +79,14 @@ class Welcome extends MY_Controller {
             $data['menu'] = $this->uri->segment(1);
         }
 
-        $data['content'] = $this->content_model->get_content($data['menu']);
-        
-         if($data['menu'] == 'news') {
-             $data['news'] = $this->content_model->get_content_cat('news');
+       
+    $this->get_content_data($data['menu']);
+        if ($data['menu'] == 'news') {
+            $data['news'] = $this->content_model->get_content_cat('news');
         }
         $data['captcha'] = $this->captcha_model->initiate_captcha();
-        $data['testimonials'] = $this->content_model->get_testimonials();
-        foreach ($data['content'] as $row):
 
-            $data['title'] = $row->title;
-            $data['sidebox'] = $row->sidebox;
-            $data['metatitle'] = $row->meta_title;
-            $data['meta_description'] = $row->meta_desc;
-            $data['meta_keywords'] = $row->meta_keywords;
-            $data['slideshow_active'] = $row->slideshow;
-        endforeach;
+     
         $data['sidebar'] = "sidebox/side";
         $data['main_content'] = "global/" . $this->config_theme . "/content";
         //$data['cats'] = $this->products_model->get_cats();
@@ -104,8 +101,6 @@ class Welcome extends MY_Controller {
         $this->load->vars($data);
         $this->load->view('template/main');
     }
-    
- 
 
     function gallery($gallery) {
         $data['content'] = $this->content_model->get_gallery($gallery);

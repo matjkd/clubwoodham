@@ -18,8 +18,6 @@ else {
 }?>
 
 
-<?php  $body = str_replace("The Eagle", "<strong>The Eagle</strong>", "$body");?>
-<?php  $body = str_replace("THE EAGLE", "<strong>THE EAGLE</strong>", "$body");?>
 <?=$body?>
 
 <?php endforeach;?>

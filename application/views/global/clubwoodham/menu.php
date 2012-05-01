@@ -51,7 +51,9 @@
     $role = $this->session->userdata('role');
     if ($is_logged_in != 0 || $role == 1) {
 
-        echo "<li>".anchor('admin', 'Admin')."</li>";
+       
+         echo "<li>".anchor('admin', 'Admin')."</li>";
+          echo "<li>".anchor('admin/classes', 'Classes')."</li>";
     }
     ?>
 

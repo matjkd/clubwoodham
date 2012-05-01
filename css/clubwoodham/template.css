@@ -22,7 +22,7 @@ h1 {
     word-spacing: 0em;
     line-height: 1.2;
     color:#014a8a;
-    margin-bottom:5px;
+    margin-bottom:12px;
 }
 h2 {
     font-family: 'Oswald', sans-serif;
@@ -39,13 +39,13 @@ h2 {
 }
 p {
 
-    padding-top:10px;
+    padding-top:0px;
     padding-bottom:10px;
     margin:0;
 
 }
 #header {
-    background: url('images/header.jpg') no-repeat #2a8424;
+    background: url('images/header.jpg') no-repeat;
     height:152px;
     width:960px;
     margin: 0 auto;
@@ -89,10 +89,11 @@ p {
 }
 #bottomfooter {
     background: url('images/footer.jpg') repeat-x #00385c;
-    height:148px;
+    height:120px;
     clear:both;
     width:960px;
     margin: 0 auto;
+    padding-top:28px;
     color:#ffffff;
 
 }
@@ -152,29 +153,28 @@ p {
 .footermenu {
     clear:both;
     text-align: center;
-
-
     position:relative; 
     padding-left:0px;
-
+    margin:0;
     font-size: 1.0em;
     line-height: 1.6em;
 }
 .footermenu ul {
-
-    margin-left: 0px;
+    margin-top:5px;
+    margin-bottom:0px;
+   
 }
 .footermenu li {
     display:inline;
-    padding-left: 0px;
-    padding-right:5px;
+ margin-left: 5px;
+    margin-right: 5px;
 
 }
 
 .footermenu a {
     text-decoration:none;
-    color: #fff;
-    border-right:1px #292929;
+    color: #333;
+    
 
 }
 
@@ -344,7 +344,7 @@ input:focus, textarea:focus {
 
 }
 .title {
-    border:0px solid #000;
+    border:0px solid #000;We have a fully air conditioned, state of the art Gymnasium along with a large range of studio programmes to suit all levels of fitness, plus squash and racketball courts. 
     display:block;
     width:192px;
     clear:both;
@@ -360,32 +360,7 @@ input:focus, textarea:focus {
 
 }
 
-ul.bottomnav {
-    list-style: none;
-    padding: 0 0px;
-    margin: 0;
-    float: left;
 
-
-}
-ul.bottomnav li {
-    float: left;
-    margin: 0;
-    padding: 0 10px;
-    position: relative; /*--Declare X and Y axis base for sub navigation--*/
-
-    border-right: 1px solid #555; /*--Create bevel effect--*/
-
-
-}
-ul.bottomnav li a{
-
-    color: #555;
-    display: block;
-    text-decoration: none;
-    /*     border-bottom: 3px solid #f99000; --Create bevel effect--*/
-    float: left;
-}
 
 ul.topnav {
     list-style: none;
@@ -400,7 +375,9 @@ ul.topnav {
 ul.topnav li {
     float: left;
     margin: 0;
-    padding: 0 20px;
+    padding: 0 18px;
+    background: url('images/menuback.jpg') repeat-x;
+    background-position: 0 0;
     position: relative; /*--Declare X and Y axis base for sub navigation--*/
     border-left: 1px solid #0e3a55; /*--Create bevel effect--*/
     border-right: 1px solid #186797; /*--Create bevel effect--*/
@@ -416,7 +393,7 @@ ul.topnav li a{
     float: left;
 }
 ul.topnav li a:hover{
-    background: url(topnav_hover.gif) no-repeat center top;
+    background-position:bottom;
 }
 ul.topnav li span { /*--Drop down trigger styles--*/
     width: 17px;
@@ -433,6 +410,7 @@ ul.topnav li ul.subnav {
     margin: 0; padding: 0;
     display: none;
     float: left;
+
     width: 170px;
     border-top: 3px solid #f99000;
 }
@@ -445,6 +423,7 @@ ul.topnav li ul.subnav li{
     border-left: 0px solid #0e3a55; /*--Create bevel effect--*/
     border-right: 0px solid #186797; /*--Create bevel effect--*/
     clear: both;
+    background-position: bottom;
     z-index:1000;
 
 }
@@ -460,6 +439,10 @@ html ul.topnav li ul.subnav li a:hover { /*--Hover effect for subnav links--*/
 
 ul.subnav {
 
+    background:#fb9e0e;
+}
+ul.subnav li {
+    background-image:none;
     background:#fb9e0e;
 }
 ul.subnav li a{
@@ -495,6 +478,7 @@ ul.subnav li a{
     border-bottom: 1px solid #fff;
     color: #669;
     border-top: 1px solid transparent;
+    position:relative;
 }
 #box-table-a tr:hover td
 {
@@ -536,7 +520,7 @@ ul.subnav li a{
 .newsImage {
     float:left;
     width:200px;
-    padding-right:5px;
+    padding-right:20px;
 }
 .newsImage img {
     -moz-border-radius: 12px;
@@ -545,5 +529,108 @@ ul.subnav li a{
     width:200px;
 }
 .newsContent {
-   
+
+}
+.hoverbox {
+
+    width:16px;
+    height:16px;
+
+}
+.infobox
+{
+    position:absolute;
+    width:300px;
+    padding:10px;
+    z-index:2000;
+    display: none;
+    margin:0px;
+    background-color: black;
+    opacity:0.9;
+    color: white;
+}
+
+.widget {  
+    width: 100%;  
+    margin: 0px;  
+    padding: 0px;  
+    background: #fff;  
+    border: 0px solid #dedbd1;  
+    margin-bottom: 15px;  
+}  
+
+.widget a {  
+    color: #222;  
+    text-decoration: none;  
+}  
+
+.widget a:hover {  
+    color: #009;  
+    text-decoration: underline;  
+}  
+.tabnav ul {
+    background:#dddddd;
+}
+.tabnav li {  
+    display: inline;  
+    list-style: none;  
+    padding-right: 5px;  
+    height:40px;
+    border:0px;
+}  
+.ui-state-default {
+    border:0px;
+    height:40px;
+    background: #fff;  
+}
+
+.ui-corner-top {
+    border:0px;
+    height:40px;
+    background: #fff;  
+}
+.ui-widget-header {
+    border:0px;
+    background:none;
+}
+.tabnav li a {  
+    text-decoration: none;  
+
+    color: #222;  
+
+    padding: 4px 6px;  
+    outline: none;  
+}  
+
+.tabnav li a:hover, .tabnav li a:active, .tabnav li.ui-tabs-selected a {  
+    background: #aabcfe;  
+    color: #222;  
+    text-decoration: none;  
+}  
+
+.tabdiv {  
+    margin-top: 2px;  
+    background: #fff;  
+    border: 0px solid #dedbd1;  
+    padding: 0px;  
+}  
+
+.tabdiv li {  
+    list-style-image: url("star.png");  
+    margin-left: 20px;  
+}  
+
+.ui-tabs-hide {  
+    display: none;  
+}  
+
+.newsDiv {
+    padding-top:20px;
+    padding-bottom:20px;
+    border-top: solid 1px #014a8a;
+}
+
+.newsDiv:first-child {
+
+    border-top: solid 0px #222;
 }

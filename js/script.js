@@ -17,13 +17,6 @@ var base_url = $('#baseurl').val();
 
 
 
-//overlay
-$(document).ready(function() {
-
-
-
-    $("img[rel]").overlay();
-});
 
 // usage: log('inside coolFunc',this,arguments);
 // paulirish.com/2009/log-a-lightweight-wrapper-for-consolelog/
@@ -36,21 +29,28 @@ window.log = function(){
 };
 
 $(document).ready(function() {
-    $('.slideshow').cycle({
+    
+    var slideShow1 = $('.slideshow');
+    var slideShow2 =  $('.slideshow2');
+    
+    slideShow1.cycle({
         speedIn:  2000,
         speedOut: 2000,
         timeout:   5000,
         fx: 'fade' // choose your transition type, ex: fade, scrollUp, shuffle, etc...
     });
-$('div.slideshow').slideDown('slow');
+   
 
- $('.slideshow2').cycle({
+    slideShow2.cycle({
         speedIn:  2000,
         speedOut: 2000,
         timeout:   5000,
         fx: 'fade' // choose your transition type, ex: fade, scrollUp, shuffle, etc...
     });
-$('div.slideshow2').slideDown('slow');
+    
+      slideShow2.fadeIn(2000);
+    slideShow1.fadeIn(2000);
+  
 
 
 });
@@ -127,6 +127,10 @@ $(document).ready(function() {
 });
 
 
+
+
+
+
 /***********************************************/
 /*
 * MouseOver hover thing for sidebox buttons
@@ -135,8 +139,8 @@ $(document).ready(function() {
 ************************************************/
 $(document).ready(function(){
     
-         $("#sidebox img").hover(
-     function() {
+    $("#sidebox img").hover(
+        function() {
         
             $(this).stop().animate({
                 opacity: 0.5
@@ -152,7 +156,7 @@ $(document).ready(function(){
         
             $(this).stop().animate({
                 
-                 opacity: 1
+                opacity: 1
                
                 
             
@@ -187,23 +191,87 @@ $(document).ready(function(){
 
             //show subnav on hover
             $(this).mouseenter(function() {
+                $(this).stop().css({
+                    backgroundPosition: "0px -28px"
+                   
+                },150);
                 $(this).find("ul").stop(true, true).slideDown('fast');
             });
 						
             //hide submenus on exit
             $(this).mouseleave(function() {
+                $(this).stop().css({
+                    backgroundPosition: "0px 0px"
+                   
+                },150);
+                $(this).stop().animate({
+                   
+                    },150);
                 $(this).find("ul").stop(true, true).slideUp('fast');
+            });
+        } else {
+            //show subnav on hover
+            $(this).mouseenter(function() {
+                $(this).stop().css({
+                    backgroundPosition: "0px -28px"
+                   
+                },150);
+                
+            });
+						
+            //hide submenus on exit
+            $(this).mouseleave(function() {
+                $(this).stop().css({
+                    backgroundPosition: "0px 0px"
+                   
+                },150);
+                $(this).stop().animate({
+                   
+                    },150);
+                
             });
         }
     });
 });
 
+/***********************************************/
+/*
+ * infobox hover
+ *
+ *
+ **********************************************/
+$(document).ready(function(){
 
-jQuery(function() {
- $('#timepicker1').timepicker();
- $('#timepicker2').timepicker();
+    $('.hoverbox').hover(
+        function(){
+            $('.infobox',this).stop(true, true).slideDown('fast');
+        },
+        function(){
+            $('.infobox',this).stop(true, true).slideUp('fast');
+        })
+
 });
 
+jQuery(function() {
+    $('#timepicker1').timepicker();
+    $('#timepicker2').timepicker();
+});
+
+
+/****************************************************/
+/*
+ *tabs
+ *
+ *
+ **************************************************/
+$(document).ready(function(){
+    $('#tabvanilla').tabs({
+        fx: {
+            height: 'toggle', 
+            opacity: 'toggle'
+        }
+    });
+});
 /**
  * --------------------------------------------------------------------
  * jQuery-Plugin "pngFix"

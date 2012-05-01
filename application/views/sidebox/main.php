@@ -1,6 +1,6 @@
 <div id="sidebox" >
-    <img  src="<?= base_url() ?>images/icons/buttons/Button_bookaclass.png"/>
-    <img  src="<?= base_url() ?>images/icons/buttons/Button_bookacourt.png"/>
-    <img  src="<?= base_url() ?>images/icons/buttons/Button_jointoday.png"/>
-    <a href="<?=base_url()?>news"><img  src="<?= base_url() ?>images/icons/buttons/Button_upcomingevents.png"/></a>
+    <a href="<?=base_url()?>news"><img  src="<?= base_url() ?>images/icons/buttons/UpcomingEvents_Button.png"/></a>
+    <img  src="<?= base_url() ?>images/icons/buttons/BookACourt_Button.png"/>
+    <img  src="<?= base_url() ?>images/icons/buttons/JoinToday_Button.png"/>
+    
 </div>

@@ -5,7 +5,7 @@
 
 
 
-<div class="ten columns" >
+<div class="ten columns" style="height:330px;" >
     <img id="HomePicOverlay" width="570px" height="311px" src="<?= base_url() ?>images/slides/HomePic_Corners.png"/>
     <div class="slideshow" style=" display:none; ">
         

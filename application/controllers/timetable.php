@@ -24,10 +24,10 @@ class Timetable extends MY_Controller {
             $data['menu'] = 'studio';
         }
 
-        $menu = $data['menu'].'_timetable';
+        $menu = $data['menu'] . '_timetable';
         $this->get_content_data($menu);
-$data['timetable'] = $this->timetable_model->get_timetable($data['menu']);
-  
+        $data['timetable'] = $this->timetable_model->get_timetable($data['menu']);
+        $data['days'] = $this->timetable_model->get_timetable_days($data['menu']);
         $data['main_content'] = "admin/timetables";
         $data['slideshow'] = 'header/slideshow';
 

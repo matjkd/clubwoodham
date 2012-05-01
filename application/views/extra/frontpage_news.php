@@ -1,8 +1,10 @@
-<div>
-    
 <?php if ($news != NULL) {
+    $x = 0;
     foreach ($news as $row): ?>
+<?php $x = $x +1; ?>
+<?php if($x ==1) { ?>
 <div class="newsDiv">
+    <h1>Upcoming Events</h1>
         <div class="newsImage">
             <img  src="https://s3-eu-west-1.amazonaws.com/clubwoodham/<?= $row->news_image ?>"/>
         </div>
@@ -20,8 +22,7 @@
         <div style="clear:both">
         </div>
 </div>
+<?php } ?>
     <?php endforeach;
 } ?>
-
-</div>
 

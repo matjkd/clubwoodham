@@ -36,6 +36,15 @@ class Admin extends MY_Controller {
         $this->load->view('template/main');
     }
 
+    function classes() {
+
+        $data['content'] = $this->content_model->get_content_cat('class');
+        $data['main_content'] = "global/" . $this->config_theme . "/content";
+        $data['sidebox'] = 'classes';
+        $this->load->vars($data);
+        $this->load->view('template/main');
+    }
+
     function edit() {
 
 
@@ -83,7 +92,7 @@ class Admin extends MY_Controller {
             $this->upload_image($id);
 
 
-             redirect("admin/edit/$id");
+            redirect("admin/edit/$id");
         }
     }
 
@@ -110,12 +119,55 @@ class Admin extends MY_Controller {
 
         $menu = $category . '_timetable';
         $this->get_content_data($menu);
-
+        $data['classes'] = $this->content_model->get_content_cat('class');
         $data['pages'] = $this->content_model->get_all_content();
         $data['timetable'] = $this->timetable_model->get_timetable($category);
+        $data['days'] = $this->timetable_model->get_timetable_days($category);
         $data['sidebox'] = "timetable";
         $this->load->vars($data);
         $this->load->view('template/main');
+    }
+
+    function edit_timetable($id) {
+        $data['timetable_entry'] = $this->timetable_model->get_entry($id);
+        foreach ($data['timetable_entry'] as $row):
+
+            $data['category'] = $row->timetable_category;
+            $data['timetable_id'] = $row->timetable_id;
+            $data['day'] = $row->day;
+            $data['from'] = $row->from;
+            $data['to'] = $row->to;
+            $data['class'] = $row->class;
+            $data['instructor'] = $row->instructor;
+            $data['description'] = $row->description;
+            $data['level'] = $row->level;
+            $data['where'] = $row->where;
+            $category = $data['category'];
+        endforeach;
+
+        $data['main_content'] = "admin/timetables";
+        $data['classes'] = $this->content_model->get_content_cat('class');
+        $menu = $category . '_timetable';
+        $this->get_content_data($menu);
+
+        $data['pages'] = $this->content_model->get_all_content();
+        $data['timetable'] = $this->timetable_model->get_timetable($category);
+        $data['days'] = $this->timetable_model->get_timetable_days($category);
+        $data['sidebox'] = "timetable";
+        $this->load->vars($data);
+        $this->load->view('template/main');
+    }
+
+    function update_timetable() {
+        $id = $this->input->post('timetable_id');
+        $this->timetable_model->update_timetable($id);
+        redirect($this->agent->referrer());
+    }
+
+    function delete_timetable($id) {
+
+        $this->timetable_model->delete_timetable($id);
+        redirect($this->agent->referrer());
     }
 
     function get_content_data($menu) {
@@ -140,7 +192,7 @@ class Admin extends MY_Controller {
     function add_timetable() {
 
         $this->timetable_model->add_entry();
-        redirect("admin/timetables");
+        redirect($this->agent->referrer());
     }
 
     function editnews() {
@@ -160,57 +212,6 @@ class Admin extends MY_Controller {
         $id = $this->uri->segment(3);
         $this->news_model->edit_news($id);
         redirect("admin/editnews/$id");
-    }
-
-    function editpro() {
-
-        $id = $this->uri->segment(3);
-        $data['page'] = 'professionals';
-        $data['content'] = $this->content_model->get_content('professionals');
-        $data['professional'] = $this->professionals_model->get_professional($id);
-        foreach ($data['professional'] as $row):
-
-            $data['practice'] = $this->professionals_model->practice_areas();
-            $data['professional_id'] = $id;
-        endforeach;
-
-        $data['cases'] = $this->cases_model->list_cases();
-
-        $data['assigned_cases'] = $this->cases_model->assigned_cases($id);
-
-        $data['news'] = $this->news_model->list_news();
-        $data['main'] = "admin/edit_user";
-        $data['menu'] = $this->content_model->get_menus();
-
-        $data['assigned_practices'] = $this->professionals_model->assigned_practice_areas($id);
-
-        $this->load->vars($data);
-        $this->load->view('template/main');
-    }
-
-    function edit_pro() {
-        $id = $this->uri->segment(3);
-        $this->professionals_model->edit_pro($id);
-        redirect("admin/editpro/$id");
-    }
-
-    function edit_practice() {
-
-        $id = $this->uri->segment(3);
-        $data['page'] = 'practices';
-        $data['content'] = $this->content_model->get_content('news');
-        $data['practice'] = $this->practice_model->get_practice($id);
-        $data['news'] = $this->news_model->list_news();
-        $data['main'] = "admin/edit_practice";
-        $data['menu'] = $this->content_model->get_menus();
-        $this->load->vars($data);
-        $this->load->view('template/main');
-    }
-
-    function edit_practice_submit() {
-        $id = $this->uri->segment(3);
-        $this->practice_model->edit_practice($id);
-        redirect("admin/edit_practice/$id");
     }
 
     function upload_attachment($id, $name) {
@@ -256,7 +257,7 @@ class Admin extends MY_Controller {
 
             $fileName = $_FILES['file']['name'];
             $tmpName = $_FILES['file']['tmp_name'];
-             $fileName = str_replace(" ", "_", $fileName);
+            $fileName = str_replace(" ", "_", $fileName);
             $filelocation = $fileName;
 
             $thefile = file_get_contents($tmpName, true);
@@ -318,13 +319,12 @@ class Admin extends MY_Controller {
                 // run insert model to write data to db
                 //upload file
                 //retrieve uploaded file
-                
                 $this->upload_image();
 
 
 
 
-                  redirect('/admin');   // or whatever logic needs to occur
+                redirect('/admin');   // or whatever logic needs to occur
             } else {
                 echo 'An error occurred saving your information. Please try again later';
                 // Or whatever error handling is necessary
@@ -339,11 +339,11 @@ class Admin extends MY_Controller {
         } else { // passed validation proceed to post success logic
             $name = $this->input->post('name');
             $this->upload_attachment($id, $name);
-            
-               redirect("admin/edit/$id");
+
+            redirect("admin/edit/$id");
         }
     }
-    
+
     function delete_attachment($id) {
         //delete attachment from database
         $this->content_model->delete_attachment($id);
@@ -511,6 +511,17 @@ class Admin extends MY_Controller {
         $data['captcha'] = $this->captcha_model->initiate_captcha();
         $data['pages'] = $this->content_model->get_all_content();
         $data['category'] = "news";
+        $this->load->vars($data);
+        $this->load->view('template/main');
+    }
+
+    function add_class_content() {
+        $data['slideshowtoggle'] = "off";
+        $data['main_content'] = "admin/add_content";
+        $data['seo_links'] = $this->content_model->get_seo_links();
+        $data['captcha'] = $this->captcha_model->initiate_captcha();
+        $data['pages'] = $this->content_model->get_all_content();
+        $data['category'] = "class";
         $this->load->vars($data);
         $this->load->view('template/main');
     }
