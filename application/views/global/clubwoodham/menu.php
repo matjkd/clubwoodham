@@ -56,7 +56,7 @@
           echo "<li>".anchor('admin/classes', 'Classes')."</li>";
           echo "<li>".anchor('admin/timetables/studio', 'Add  Studio Timetable')."</li>";
           echo "<li>".anchor('admin/timetables/circuitgym', 'Add  Circuit Timetable')."</li>";
-          echo "<li>".anchor('admin/classes/junior-programme', 'Add  Junior Timetable')."</li>";
+          echo "<li>".anchor('admin/timetables/junior-programme', 'Add  Junior Timetable')."</li>";
     }
     ?>
 

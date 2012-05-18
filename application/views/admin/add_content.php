@@ -6,17 +6,13 @@
 </p>
 
 <p>
-    Menu link:<br/>
+    Menu link (not required field):<br/>
     <?= form_input('menu', set_value('menu')) ?>
 </p>
 
 
 
 
-<p>
-    Date: <br/>
-    <input type="text" name="date_added" id="datepicker" value=""><br/>
-</p>
 <?php
 if (!isset($category)) {
     $category = "";
@@ -25,11 +21,11 @@ if (!isset($category)) {
 
 <p>
     Category:<br/>
-    <input type="text" name="category" id="datepicker" value="<?= set_value('category', $category) ?>"  disable="disabled" onFocus="this.blur();"><br/>
+    <input type="text" name="category"  value="<?= set_value('category', $category) ?>"  disable="disabled" onFocus="this.blur();"><br/>
 </p>
 
 <p class="Image">
-    <?= form_label('Image') ?><br/>
+    <?= form_label('Image') ?> <br/>
 
 <?= form_upload('file') ?>
 </p>

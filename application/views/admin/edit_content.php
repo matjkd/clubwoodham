@@ -17,7 +17,7 @@ Title* <br/><?=form_input('title', $row->title)?><br/>
 <img src="https://s3-eu-west-1.amazonaws.com/clubwoodham/<?=$row->news_image?>" style="padding:10px 10px 10px 0;" width="150px">
 <?php } ?>
 <p class="Image">
-    <?= form_label('Image') ?><br/>
+    <?= form_label('Image') ?> (not required field)<br/>
 
 <?= form_upload('file') ?>
 </p>
@@ -44,6 +44,9 @@ Title* <br/><?=form_input('title', $row->title)?><br/>
 <textarea cols=65 rows=20 name="content" id="content" class='wymeditor'><?=$row->content?></textarea>
 <br/>
 
+
+<strong>None of the fields below are required</strong>
+<hr/>
 Meta Description<br/>
 <textarea  cols=65 rows=2 name="meta_desc"><?=$row->meta_desc?></textarea>
 <br/>

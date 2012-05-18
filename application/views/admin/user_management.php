@@ -16,8 +16,11 @@ User Management
   
     
     ?>
+Firstname<br/>
 <input type="text" name="firstname" title="Firstname" value="<?=set_value('firstname', (isset($firstname)) ? $firstname : '' )?>"/>
+Lastname<br/>
 <input type="text" name="lastname" title="Lastname" value="<?=set_value('lastname', (isset($lastname)) ? $lastname : '' )?>"/>
+Email<br/>
 <input type="text" name="email_address" title="Email Address" value="<?=set_value('email_address', (isset($email)) ? $email : '' )?>"/>
 
 <select name="role">
@@ -30,9 +33,11 @@ User Management
 
 <fieldset>
     <legend>Login Info</legend>
-    
+    Username<br/>
     <input type="text" name="username" title="Username" value="<?=set_value('username', (isset($username)) ? $username : '' )?>"/>
+    Password<br/>
         <input type="password" name="password" title="Password" value="<?=set_value('password')?>"/>
+        Password Repeat<br/>
         <input type="password" name="password2" title="Password" value="<?=set_value('password2')?>"/>
     <?php
   
