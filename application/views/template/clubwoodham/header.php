@@ -53,7 +53,7 @@ if (isset($meta_keywords) && $meta_keywords != NULL) {
 <link rel="stylesheet" href="<?= base_url() ?>css/<?=$this->config_theme?>/base.css">
 <link rel="stylesheet" href="<?= base_url() ?>css/<?=$this->config_theme?>/layout.css">
 <link rel="stylesheet" href="<?= base_url() ?>css/<?=$this->config_theme?>/skeleton.css">
-<link rel="stylesheet" href="<?= base_url() ?>css/<?=$this->config_theme?>/template.css">
+<link rel="stylesheet" href="<?= base_url() ?>css/<?=$this->config_theme?>/template.css?20082012">
 
 <!--[if lt IE 8]>    <link rel="stylesheet" href="<?= base_url() ?>css/<?=$this->config_theme?>/ie8.css"> <![endif]-->
 
