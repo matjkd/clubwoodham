@@ -125,7 +125,7 @@
 						<?php if ($where == 1) { ?>
 						<td><?= $row->where ?></td>
 						<?php } ?>
-						<td><strong><a href="#">Book Now</a> </strong></td>
+						<td><strong><a href="http://booking.clubwoodham.co.uk/">Book Now</a> </strong></td>
 						<?php
 						$is_logged_in = $this->session->userdata('is_logged_in');
 						if (!isset($is_logged_in) || $is_logged_in == true) {
