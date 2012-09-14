@@ -3,12 +3,13 @@
 <?php if ($news != NULL) {
     foreach ($news as $row): ?>
 <div class="newsDiv">
+		<?php if($row->news_image != "" && $row->news_image !=NULL) { ?>}
         <div class="newsImage">
-        	<?php if($row->news_image != "") { ?>}
+        
             <img  src="https://s3-eu-west-1.amazonaws.com/clubwoodham/<?= $row->news_image ?>"/>
-            <?php } ?>
+           
         </div>
-
+ <?php } ?>
         <div class="newsContent">
             <h1><?= $row->title ?>
             <?php
