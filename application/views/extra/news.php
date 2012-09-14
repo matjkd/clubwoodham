@@ -4,7 +4,9 @@
     foreach ($news as $row): ?>
 <div class="newsDiv">
         <div class="newsImage">
+        	<?php if($row->news_image != NULL) { ?>}
             <img  src="https://s3-eu-west-1.amazonaws.com/clubwoodham/<?= $row->news_image ?>"/>
+            <?php } ?>
         </div>
 
         <div class="newsContent">
