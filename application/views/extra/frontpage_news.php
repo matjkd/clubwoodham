@@ -5,10 +5,11 @@
 <?php if($x ==1) { ?>
 <div class="newsDiv">
     <h1>Upcoming Events</h1>
+    <?php if($row->news_image != "" && $row->news_image !=NULL) { ?>
         <div class="newsImage">
             <img  src="https://s3-eu-west-1.amazonaws.com/clubwoodham/<?= $row->news_image ?>"/>
         </div>
-
+ <?php } ?>
         <div class="newsContent">
             <h1><?= $row->title ?>
             <?php
