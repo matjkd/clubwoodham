@@ -28,6 +28,27 @@ window.log = function(){
     }
 };
 
+function deleteContent(id) {
+	$question = confirm('Are you sure');
+	
+	if($question) { 
+		//delete content
+		
+        $.post(base_url + 'admin/delete_content', {
+            contentID: id
+       
+        }, function(data) {
+      
+           
+                  
+        });
+		
+		
+	} else {
+		alert('Nothing Deleted');
+	}
+}
+
 $(document).ready(function() {
     
     var slideShow1 = $('.slideshow');

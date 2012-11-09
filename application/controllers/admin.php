@@ -35,6 +35,11 @@ class Admin extends MY_Controller {
         $this->load->vars($data);
         $this->load->view('template/main');
     }
+	
+	function delete_content() {
+	$id = $this->input->post('contentID');
+	$this->content_model->delete_content($id);
+}
 
     function classes() {
 

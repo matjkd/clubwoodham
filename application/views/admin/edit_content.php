@@ -9,7 +9,11 @@
 Title* <br/><?=form_input('title', $row->title)?><br/>
 </p>
 
-
+<?php if($row->category == 'news'){ ?>
+<p>
+Show on Frontpage <br/><?=form_checkbox('frontpage', '1', $row->frontpage)?><br/>
+</p>
+<?php } ?>
 <?=form_hidden('menu', $row->menu)?>
 
 

@@ -79,6 +79,7 @@ class Content_model extends CI_Model {
             'meta_keywords' => $this->input->post('meta_keywords'),
             'meta_title' => $this->input->post('meta_title'),
             'sidebox' => $this->input->post('sidebox'),
+            'frontpage' => $this->input->post('frontpage'),
             'slideshow' => $this->input->post('slideshow')
         );
 
@@ -127,11 +128,16 @@ class Content_model extends CI_Model {
         }
     }
 
+	function delete_content($contentId) {
+		$this->db->where('content_id', $contentId);
+		$query = $this->db->delete('content');
+		
+	}
     function get_service_groups() {
 
         $query = $this->db->get('service_groups');
         if ($query->num_rows > 0)
-            ; {
+             {
             return $query->result();
         }
     }
@@ -139,7 +145,7 @@ class Content_model extends CI_Model {
     function get_services() {
         $query = $this->db->get('services');
         if ($query->num_rows > 0)
-            ; {
+             {
             return $query->result();
         }
     }

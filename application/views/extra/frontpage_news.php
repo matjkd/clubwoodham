@@ -1,7 +1,9 @@
 <?php if ($news != NULL) {
     $x = 0;
     foreach ($news as $row): ?>
-<?php $x = $x +1; ?>
+ <?php if($row->frontpage == 1) { $x = $x +1; }?>
+   
+
 <?php if($x ==1) { ?>
 <div class="newsDiv">
     <h1>Upcoming Events</h1>

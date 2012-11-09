@@ -171,6 +171,8 @@
   $this->load->vars($data);
   $this->load->view('template/main');
   }
+
+
   
   function login() {
     if ($this->session->flashdata('message')) {
