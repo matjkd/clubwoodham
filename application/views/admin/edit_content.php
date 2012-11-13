@@ -1,7 +1,8 @@
-<?php foreach($content as $row):?>
-
-
-<?php  $id = $row->content_id;?>
+<?php foreach($content as $row):
+$format = 'l jS \of F Y';
+$startdate = date($format, $row->start_publish);
+$enddate = date($format, $row->end_publish);
+$id = $row->content_id;?>
 
 
 <?=form_open_multipart("admin/edit_content/$row->content_id")?> 
@@ -9,7 +10,18 @@
 Title* <br/><?=form_input('title', $row->title)?><br/>
 </p>
 
+
+
 <?php if($row->category == 'news'){ ?>
+	
+	Start Date (this item will not show on site until this date):<br/>
+	The news will be ordered by this date too. Latest at the top. Contact Hotegg if you want earliest at the top<br/>
+ <input type="text" id="datepicker" name="startdate" value="<?=$startdate?>"/>
+<input type="hidden" id="alternate" name="startdate_unix" value="<?=$row->start_publish?>"/>
+<br/>
+End Date (after this date passes, the item will not show on site)<br/>
+<input type="text" id="datepicker2" name="enddate" value="<?=$enddate?>"/>
+<input type="hidden" id="alternate2" name="enddate_unix" value="<?=$row->end_publish?>"/><br/>
 <p>
 Show on Frontpage <br/><?=form_checkbox('frontpage', '1', $row->frontpage)?><br/>
 </p>

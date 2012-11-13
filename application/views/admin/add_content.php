@@ -1,5 +1,10 @@
 <?= form_open_multipart("admin/submit_content") ?> 
+<?php 
+$format = 'l jS \of F Y';
+$startdate = date($format, $row->start_publish);
+$enddate = date($format, $row->end_publish);
 
+?>
 <p>
     Title:<br/>
     <?= form_input('title', set_value('title')) ?>
@@ -10,8 +15,14 @@
     <?= form_input('menu', set_value('menu')) ?>
 </p>
 
-
-
+Start Date (this item will not show on site until this date):<br/>
+	The news will be ordered by this date too. Latest at the top. Contact Hotegg if you want earliest at the top<br/>
+ <input type="text" id="datepicker" name="startdate" value="<?=$startdate?>"/>
+<input type="hidden" id="alternate" name="startdate_unix" value="<?=$row->start_publish?>"/>
+<br/>
+End Date (after this date passes, the item will not show on site)<br/>
+<input type="text" id="datepicker2" name="enddate" value="<?=$enddate?>"/>
+<input type="hidden" id="alternate2" name="enddate_unix" value="<?=$row->end_publish?>"/><br/>
 
 <?php
 if (!isset($category)) {
@@ -23,6 +34,8 @@ if (!isset($category)) {
     Category:<br/>
     <input type="text" name="category"  value="<?= set_value('category', $category) ?>"  disable="disabled" onFocus="this.blur();"><br/>
 </p>
+
+
 
 <p class="Image">
     <?= form_label('Image') ?> <br/>

@@ -27,6 +27,18 @@ class Content_model extends CI_Model {
             return $query->result();
         }
     }
+	
+	  function get_content_news() {
+		$currentTime = now();
+ 		$this->db->where('start_publish <', $currentTime);
+		$this->db->where('end_publish >', $currentTime);
+        $this->db->where('category', 'news');
+        $this->db->order_by('start_publish', 'asc');
+        $query = $this->db->get('content');
+        if ($query->num_rows > 0) {
+            return $query->result();
+        }
+    }
 
     function get_gallery($gallery) {
 
@@ -80,6 +92,8 @@ class Content_model extends CI_Model {
             'meta_title' => $this->input->post('meta_title'),
             'sidebox' => $this->input->post('sidebox'),
             'frontpage' => $this->input->post('frontpage'),
+            'start_publish' => $this->input->post('startdate_unix'),
+            'end_publish' => $this->input->post('enddate_unix'),
             'slideshow' => $this->input->post('slideshow')
         );
 
@@ -188,6 +202,8 @@ class Content_model extends CI_Model {
             'category' => set_value('category'),
             'added_by' => $name,
             'gallery' => $this->input->post('gallery'),
+              'start_publish' => $this->input->post('startdate_unix'),
+            'end_publish' => $this->input->post('enddate_unix'),
             'date_added' => $datetime
         );
         $insert = $this->db->insert('content', $form_data);
