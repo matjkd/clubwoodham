@@ -15,7 +15,7 @@ Title* <br/><?=form_input('title', $row->title)?><br/>
 <?php if($row->category == 'news'){ ?>
 	
 	Start Date (this item will not show on site until this date):<br/>
-	The news will be ordered by this date too. Latest at the top. Contact Hotegg if you want earliest at the top<br/>
+	The news will be ordered by this date too. Contact Hotegg if you want the order reversed<br/>
  <input type="text" id="datepicker" name="startdate" value="<?=$startdate?>"/>
 <input type="hidden" id="alternate" name="startdate_unix" value="<?=$row->start_publish?>"/>
 <br/>
