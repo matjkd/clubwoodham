@@ -87,6 +87,7 @@
     
     if ($data['menu'] == 'news') {
       $data['news'] = $this->content_model->get_content_news();
+		 $data['futureNews'] = $this->content_model->get_future_news();
     }
     
     if ($data['menu'] == 'class-descriptions') {

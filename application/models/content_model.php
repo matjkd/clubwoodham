@@ -40,6 +40,18 @@ class Content_model extends CI_Model {
         }
     }
 
+ function get_future_news() {
+		$currentTime = now();
+ 		$this->db->where('start_publish >', $currentTime);
+		
+        $this->db->where('category', 'news');
+        $this->db->order_by('start_publish', 'desc');
+        $query = $this->db->get('content');
+        if ($query->num_rows > 0) {
+            return $query->result();
+        }
+    }
+
     function get_gallery($gallery) {
 
         $this->db->where('gallery', $gallery);
