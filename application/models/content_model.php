@@ -33,7 +33,7 @@ class Content_model extends CI_Model {
  		$this->db->where('start_publish <', $currentTime);
 		$this->db->where('end_publish >', $currentTime);
         $this->db->where('category', 'news');
-        $this->db->order_by('start_publish', 'asc');
+        $this->db->order_by('start_publish', 'desc');
         $query = $this->db->get('content');
         if ($query->num_rows > 0) {
             return $query->result();
