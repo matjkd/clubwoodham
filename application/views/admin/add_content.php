@@ -24,11 +24,20 @@ End Date (after this date passes, the item will not show on site)<br/>
 <input type="text" id="datepicker2" name="enddate" value="<?=$enddate?>"/>
 <input type="hidden" id="alternate2" name="enddate_unix" value="<?=$row->end_publish?>"/><br/>
 
+
+
 <?php
 if (!isset($category)) {
     $category = "";
 }
 ?>
+
+<?php if($category == 'news'){ ?>
+	
+	<p>
+Show on Frontpage <br/><?=form_checkbox('frontpage', '1', $row->frontpage)?><br/>
+</p>
+	<?php }?>
 
 <p>
     Category:<br/>

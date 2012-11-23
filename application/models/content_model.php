@@ -43,8 +43,8 @@ class Content_model extends CI_Model {
  function get_future_news() {
 		$currentTime = now();
  		$this->db->where('start_publish >', $currentTime);
-		
-        $this->db->where('category', 'news');
+		$this->db->or_where('end_publish <', $currentTime);
+        $this->db->having('category', 'news');
         $this->db->order_by('start_publish', 'desc');
         $query = $this->db->get('content');
         if ($query->num_rows > 0) {
@@ -216,6 +216,7 @@ class Content_model extends CI_Model {
             'gallery' => $this->input->post('gallery'),
               'start_publish' => $this->input->post('startdate_unix'),
             'end_publish' => $this->input->post('enddate_unix'),
+               'frontpage' => $this->input->post('frontpage'),
             'date_added' => $datetime
         );
         $insert = $this->db->insert('content', $form_data);
