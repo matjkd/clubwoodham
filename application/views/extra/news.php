@@ -17,7 +17,7 @@
             if (!isset($is_logged_in) || $is_logged_in == true) {
                 echo " - <a href='" . base_url() . "admin/edit/" . $row->content_id . "'>edit</a>";?>
                 
-                <a onclick="deleteContent(<?=$row->content_id?>);">Delete</a><br/>
+                <a class="jqLink" onclick="deleteContent(<?=$row->content_id?>);">Delete</a><br/>
                 <?php
             }
             ?></h1>
@@ -54,7 +54,7 @@
             if (!isset($is_logged_in) || $is_logged_in == true) {
                 echo " - <a href='" . base_url() . "admin/edit/" . $row->content_id . "'>edit</a>";?>
                 
-                <a onclick="deleteContent(<?=$row->content_id?>);">Delete</a><br/>
+                <a class="jqLink" onclick="deleteContent(<?=$row->content_id?>);">Delete</a><br/>
                 <?php
             }
             ?></h1>

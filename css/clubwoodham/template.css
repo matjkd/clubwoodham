@@ -641,3 +641,9 @@ ul.subnav li a{
 
     border-top: solid 0px #222;
 }
+
+.jqLink {
+	
+	cursor:pointer;
+	
+}

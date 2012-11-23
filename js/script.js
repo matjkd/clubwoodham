@@ -43,6 +43,12 @@ function deleteContent(id) {
                   
         });
 		
+		//reload window
+		alert('event deleted');
+		
+			location.reload();
+		
+		
 		
 	} else {
 		alert('Nothing Deleted');
