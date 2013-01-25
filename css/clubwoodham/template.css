@@ -68,12 +68,25 @@ p {
 
 }
 #breadcrumb {
-    height:26px;
+    height:23px;
     background: url('images/breadcrumb.jpg') repeat-x #036;
-    width:960px;
+    width:950px;
     margin: 0 auto;
+    padding:3px 5px 0 5px;
     display:block;
     position:relative;
+    text-align:right;
+}
+
+#breadcrumb a {
+	
+	color:rgb(180, 184, 214);
+	text-decoration:none;
+	padding-right:15px;
+	font-weight:bold;
+}
+#breadcrumb a:hover {
+	color:rgb(247, 248, 255);
 }
 #menucontainer {
 
