@@ -23,4 +23,4 @@
 
 </ul>
 
-&copy; 2012 Club Woodham. Website Developed by Hotegg Creative Design
+&copy; 2016 Club Woodham. Website Developed by Hotegg Creative Design
